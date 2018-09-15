@@ -1,5 +1,22 @@
 #### 改造postcss-px-to-viewport
 
+##### exclude配置项允许设置为函数
+配置文件.postcssrc.js（扩展exclude的类型）
+```
+"postcss-px-to-viewport": {
+      viewportWidth: 750,
+      viewportHeight: 1334,
+      unitPrecision: 3,
+      viewportUnit: 'vw',
+      selectorBlackList: ['.ignore', '.hairlines'],
+      minPixelValue: 1,
+      mediaQuery: false,
+      exclude(file) {
+        return /(\/|\\)(node_modules)(\/|\\)/.test(file)
+      }
+    },
+```
+
 ##### 增加exclude配置项
 配置文件.postcssrc.js（修改第三方库被影响的情况）
 ```
